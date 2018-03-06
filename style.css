@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+body {
+    background: grey url(./wall.jpg) no-repeat center center; 
+    background-size: cover;
+}
+
 kbd {
     
     display: inline-block;
@@ -10,13 +15,26 @@ kbd {
     height: 4em;
     text-transform: uppercase;
     position: relative;
+    
 }
 
 kbd > button {
     display: none;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 4px;
+    bottom: 4px;
+    border-radius: 4px;
+    height: 16px;
+    width: 16px;
+
+}
+kbd > img {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    height: 16px;
+    width: 16px;
+    border-radius: 4px;
 }
 
 kbd:hover > button {
@@ -25,11 +43,18 @@ kbd:hover > button {
 
 main {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+ 
 }
 
 #main {
     display: inline-block;
-    
+    padding: 48px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
 }
 
 #main > div:nth-child(2){
@@ -52,8 +77,8 @@ main {
     background-color: #000;
     color: #fff;
     text-align: center;
-    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
     font-size: 24px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    font-family: Helvetica;
 }

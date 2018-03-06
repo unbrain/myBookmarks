@@ -25,7 +25,7 @@
         }
 
         var hash = {
-            'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'tianya.com', 'y': 'youtube.com', 'u': 'uc.com', 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
+            'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 't': 'taobao.com', 'a': 'acfun.tv','y': 'youtube.com', 'i': 'iqiyi.com', 'o': 'opera.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
         }
 
         var lcalHash = JSON.parse(localStorage.getItem('myWebsite') || 'null') 
@@ -42,13 +42,23 @@
                 oKbd.textContent = keys[i][j]
                 oKbd.className = 'key'
                 var oBtn = document.createElement('button')
+                var oImg = document.createElement('img')
                 oBtn.textContent = 'E'
+                if(hash[keys[i][j]]){
+                    oImg.src = 'http://' + hash[keys[i][j]] + '/favicon.ico'
+                }else{
+                    oImg.src = './favicon.ico'
+                }
+                oImg.onerror = function (e){
+                    e.target.src = './favicon.ico'
+                }
                 oBtn.id = keys[i][j]
                 oDiv.appendChild(oKbd)
                 oKbd.appendChild(oBtn)
+                oKbd.appendChild(oImg)
                 oBtn.onclick = function (e){
                     console.log(e.target.id);
-                    value = prompt('你想用'+e.target.id+'代表的网址:')
+                    value = prompt('你想用 '+ (e.target.id) +' 代表的网址:')
                     hash[e.target.id] = value
                     localStorage.setItem('myWebsite', JSON.stringify(hash))
                 }
