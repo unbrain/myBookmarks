@@ -17,6 +17,8 @@
     </main>
     <footer></footer>
     <script>  
+
+        //1.初始化
         var keys = {
             0: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',],
             1: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l',],
@@ -28,48 +30,69 @@
             'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 't': 'taobao.com', 'a': 'acfun.tv','y': 'youtube.com', 'i': 'iqiyi.com', 'o': 'opera.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
         }
 
-        var lcalHash = JSON.parse(localStorage.getItem('myWebsite') || 'null') 
+        var lcalHash = getLocalStorage('myWebsite')
 
         if(lcalHash){
             hash = lcalHash
         }
-
+        
+        //2.遍历生成 kbd div
         for (var i = 0; i < keys.length; i++) {
-            var oDiv = document.createElement('div');
+            var oDiv = document.createElement('div')
             document.getElementById('main').appendChild(oDiv)
+
             for (var j = 0; j < keys[i].length; j++) {
                 var oKbd = document.createElement('kbd')
-                oKbd.textContent = keys[i][j]
-                oKbd.className = 'key'
                 var oBtn = document.createElement('button')
                 var oImg = document.createElement('img')
+
+                oKbd.textContent = keys[i][j]
+                oKbd.className = 'key'
                 oBtn.textContent = 'E'
+
                 if(hash[keys[i][j]]){
                     oImg.src = 'http://' + hash[keys[i][j]] + '/favicon.ico'
                 }else{
                     oImg.src = './favicon.ico'
                 }
+
                 oImg.onerror = function (e){
                     e.target.src = './favicon.ico'
                 }
+
                 oBtn.id = keys[i][j]
                 oDiv.appendChild(oKbd)
-                oKbd.appendChild(oBtn)
                 oKbd.appendChild(oImg)
+                oKbd.appendChild(oBtn)
+                
                 oBtn.onclick = function (e){
-                    console.log(e.target.id);
                     value = prompt('你想用 '+ (e.target.id) +' 代表的网址:')
                     hash[e.target.id] = value
-                    localStorage.setItem('myWebsite', JSON.stringify(hash))
+                    if(value != null){
+                        localStorage.setItem('myWebsite', JSON.stringify(hash))
+                        e.target.previousSibling.src = 'http://' + value + '/favicon.ico'
+                        e.target.previousSibling.onerror = function (e) {
+                            e.target.src = './favicon.ico'
+                        }
+                    }
                 }
             }
-
         }
-
+        
+        //3.监听用户行为
         document.onkeypress = function (e) {
             website = hash[e.key]
             //location.href = 'https://' + website
-            window.open('https://' + website, '_blank')
+            if(website){
+                window.open('https://' + website, '_blank')
+            }else{
+                alert('亲， 你还没有编辑呢')
+            }
+        }
+
+        //function
+        function getLocalStorage(e) {
+            return JSON.parse(localStorage.getItem(e || 'null'))
         }
     </script>
 </body>
