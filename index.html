@@ -10,7 +10,7 @@
 </head>
 <body>
     <header></header>
-    <main >
+    <main>
         <div id="main">
 
         </div>
@@ -40,6 +40,7 @@
             for (var j = 0; j < keys[i].length; j++) {
                 var oKbd = document.createElement('kbd')
                 oKbd.textContent = keys[i][j]
+                oKbd.className = 'key'
                 var oBtn = document.createElement('button')
                 oBtn.textContent = 'E'
                 oBtn.id = keys[i][j]
