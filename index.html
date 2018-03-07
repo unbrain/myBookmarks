@@ -34,6 +34,10 @@
             return JSON.parse(localStorage.getItem(e || 'null'))
         }
 
+        function setLocalStorage(e) {
+            return localStorage.setItem(e, JSON.stringify(hash))
+        }
+
         function tag(targetName) {
             return document.createElement(targetName)
         }
@@ -61,7 +65,7 @@
                 value = prompt('你想用 ' + (e.target.id) + ' 代表的网址:')
                 hash[e.target.id] = value
                 if (value != null) {
-                    localStorage.setItem('myWebsite', JSON.stringify(hash))
+                    setLocalStorage('myWebsite')
                     e.target.previousSibling.src = 'http://' + value + '/favicon.ico'
                     e.target.previousSibling.onerror = function (e) {
                         e.target.src = './favicon.ico'
@@ -92,18 +96,6 @@
             return {
                 keys: keys,
                 hash: hash,
-            }
-        }
-
-        function userAction(hash) {
-            document.onkeypress = function (e) {
-                website = hash[e.key]
-                //location.href = 'https://' + website
-                if (website) {
-                    window.open('https://' + website, '_blank')
-                } else {
-                    alert('亲， 你还没有编辑呢')
-                }
             }
         }
 
