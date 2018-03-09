@@ -10,7 +10,7 @@
 
 ​    t: 'cloud.tencent.com', 
 
-​    a: 'acfun.tv', 
+​    a: 'alloyteam.com', 
 
 ​    y: 'youtube.com', 
 
