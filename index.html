@@ -84,7 +84,25 @@
             }
 
             var hash = {
-                'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 't': 'taobao.com', 'a': 'acfun.tv', 'y': 'youtube.com', 'i': 'iqiyi.com', 'o': 'opera.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
+                q: 'qq.com', 
+                w: 'w3cplus.com', 
+                e: 'edx.org.com', 
+                t: 'cloud.tencent.com', 
+                a: 'acfun.tv', 
+                y: 'youtube.com', 
+                i: 'iconfont.cn', 
+                o: 'opera.com', 
+                z: 'zhangxinxu.com', 
+                m: 'macshuo.com',
+                x: 'xuetangx.com',
+                v: 'v2ex.com',
+                c: 'coolshell.cn',
+                g: 'github.com',
+                l: 'leetcode.com',
+                s: 'segmentfault.com',
+                r: 'ruanyifeng.com',
+                b: 'bluereader.org',
+                f: 'freecodecamp.cn',
             }
 
             var lcalHash = getLocalStorage('myWebsite')
@@ -104,7 +122,7 @@
                 website = hash[e.key]
                 //location.href = 'https://' + website
                 if (website) {
-                    window.open('https://' + website, '_blank')
+                    window.open('http://' + website, '_blank')
                 } else {
                     alert('亲， 你还没有编辑呢')
                 }
