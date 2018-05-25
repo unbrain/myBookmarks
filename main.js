@@ -29,7 +29,6 @@ function createImage(domain) {
     } else {
         oImg.src = './favicon.ico'
     }
-
     oImg.onerror = function (e) {
         e.target.src = './favicon.ico'
     }
@@ -114,7 +113,6 @@ function generateKeyboard(keys, hash) {
     for (var i = 0; i < keys.length; i++) {
         var oDiv = tag('div')
         document.getElementById('main').appendChild(oDiv)
-
         for (var j = 0; j < keys[i].length; j++) {
             var oKbd = tag('kbd')
             var oBtn = creatButton(keys[i][j])
